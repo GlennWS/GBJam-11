@@ -19,7 +19,7 @@ public class SeatController : MonoBehaviour
     {
         // Accumulate elapsed time
         timer += Time.deltaTime;
-        Debug.Log(timer);
+        //Debug.Log(timer);
 
         // After 5 seconds have passed,
         if (timer >= 5.0f)
@@ -36,7 +36,7 @@ public class SeatController : MonoBehaviour
             if (scriptComponent._occupied == false)
             {
                 // It is now!
-                scriptComponent._occupied = true;
+                scriptComponent.OccupySeat();
                 // Select a random cat customer to occupy the seat :)
                 int randomNum = UnityEngine.Random.Range(0, catSprites.Length);
                 Sprite randomSprite = catSprites[randomNum];
@@ -45,9 +45,7 @@ public class SeatController : MonoBehaviour
             }
 
             // Empty the array of seats
-            Debug.Log(seats.Length);
             Array.Clear(seats, 0, seats.Length);
-            Debug.Log(seats.Length);
             GameObject[] totalSeats = GameObject.FindGameObjectsWithTag("Seat");
             List<GameObject> tempSeatList = new List<GameObject>();
 
