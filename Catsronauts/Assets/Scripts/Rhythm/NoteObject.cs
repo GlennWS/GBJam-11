@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NoteObject : MonoBehaviour
 {
     public bool canBePressed;
-
     public KeyCode keyToPress;
+    public RhythmController rc;
+    public float noteScore = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,7 @@ public class NoteObject : MonoBehaviour
             if (canBePressed)
             {
                 gameObject.SetActive(false);
+                rc.NoteHit(noteScore);
             }
         }
     }
@@ -36,9 +39,10 @@ public class NoteObject : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Activator")
+        if (other.tag == "Activator" && gameObject.activeSelf)
         {
             canBePressed = false;
+            rc.NoteMissed();
         }
     }
 }

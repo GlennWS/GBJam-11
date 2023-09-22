@@ -1,15 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RhythmController : MonoBehaviour
 {
     public BeatScroller beatScroller;
     public SpriteRenderer rhythmBarSR;
     public SpriteRenderer noteHitSR;
+    public float totalScore = 0;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI multiplierText;
+
+    public int currentMultiplier;
+    public int multiplierCounter;
+    public int[] multiplierThresholds;
 
     void OnEnable()
     {
+        currentMultiplier = 1;
         PlayerController.onServeCocktail += StartRhythmGame;
     }
 
@@ -65,5 +75,32 @@ public class RhythmController : MonoBehaviour
         // and play it!
         GetComponent<AudioSource>().clip = clip;
         GetComponent<AudioSource>().Play();
+    }
+
+    public void NoteHit(float noteScore)
+    {
+        if (currentMultiplier - 1 < multiplierThresholds.Length)
+        {
+            multiplierCounter++;
+            if (multiplierThresholds[currentMultiplier - 1] <= multiplierCounter)
+            {
+                multiplierCounter = 0;
+                currentMultiplier++;
+            }
+        }
+        totalScore += noteScore * currentMultiplier;
+        scoreText.text = "Score: " + totalScore;
+        multiplierText.text = "Multiplier: x" + currentMultiplier;
+    }
+
+    public void NoteMissed()
+    {
+        Debug.Log("missed");
+
+        totalScore -= 10;
+        currentMultiplier = 1;
+        multiplierCounter = 0;
+
+        multiplierText.text = "Multiplier: x" + currentMultiplier;
     }
 }
