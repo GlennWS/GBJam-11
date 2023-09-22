@@ -8,13 +8,16 @@ public class RhythmController : MonoBehaviour
     public SpriteRenderer rhythmBarSR;
     public SpriteRenderer noteHitSR;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         PlayerController.onServeCocktail += StartRhythmGame;
     }
 
-    // Update is called once per frame
+    void OnDisable()
+    {
+        PlayerController.onServeCocktail -= StartRhythmGame;
+    }
+
     void Update()
     {
         

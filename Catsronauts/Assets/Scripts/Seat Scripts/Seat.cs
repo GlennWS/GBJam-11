@@ -28,7 +28,7 @@ public class Seat : MonoBehaviour
 
     private IEnumerator WaitToOrder()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(3);
         cocktailChoice = Cocktails.GetRandomCocktail();
         _catDecided = true;
         Debug.Log(gameObject.name + " wants: " + cocktailChoice);
