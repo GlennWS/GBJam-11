@@ -23,7 +23,7 @@ public class SeatController : MonoBehaviour
         //Debug.Log(timer);
 
         // After 5 seconds have passed,
-        if (timer >= 5.0f && seats.Length > 0 && beatScroller.hasStarted == false)
+        if (timer >= 2.0f && seats.Length > 0 && beatScroller.hasStarted == false)
         {
             // Set the timer back to 0
             timer = 0f;
