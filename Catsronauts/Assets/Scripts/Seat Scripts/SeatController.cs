@@ -9,6 +9,7 @@ public class SeatController : MonoBehaviour
     private Sprite[] catSprites;
     private GameObject[] seats;
     private float timer = 0f;
+    public BeatScroller beatScroller;
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class SeatController : MonoBehaviour
         //Debug.Log(timer);
 
         // After 5 seconds have passed,
-        if (timer >= 5.0f)
+        if (timer >= 5.0f && seats.Length > 0 && beatScroller.hasStarted == false)
         {
             // Set the timer back to 0
             timer = 0f;

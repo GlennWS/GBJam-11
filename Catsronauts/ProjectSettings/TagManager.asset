@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Seat
+  - Activator
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - UI
   - Bar
   - Player
-  - 
-  - 
+  - Rhythm Bar
+  - Offscreen
   - 
   - 
   - 
@@ -50,4 +51,13 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1684137675
+    locked: 0
+  - name: Rhythm Bar
+    uniqueID: 939499043
+    locked: 0
+  - name: Notes
+    uniqueID: 3957840409
+    locked: 0
+  - name: Offscreen
+    uniqueID: 3177426749
     locked: 0

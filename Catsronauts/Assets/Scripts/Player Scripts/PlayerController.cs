@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public float moveSpeed = 5.0f;
     public Transform[] seatPositions;
-    private int _currSeatIndex = 0;
+    public int _currSeatIndex = 0;
+    RhythmController rhythmController;
+    public static Action<Cocktail> onServeCocktail;
+    public BeatScroller beatScroller;
 
     private int CurrSeatIndex
     {
@@ -22,38 +26,41 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Player movement
-        if (Input.GetKeyDown(KeyCode.A))
+        if (!beatScroller.hasStarted)
         {
-            CurrSeatIndex--;
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            CurrSeatIndex++;
-        }
-
-        // Cat interaction
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            GameObject tempObj = GameObject.Find("Seat" + _currSeatIndex);
-            Seat currSeat = tempObj.GetComponent<Seat>();
-            if (currSeat._occupied == true && currSeat._catDecided == false)
+            // Player movement
+            if (Input.GetKeyDown(KeyCode.A))
             {
-                Debug.Log("there's a fat ass cat sitting here");
-            } 
-            else if (currSeat._occupied == true && currSeat._catDecided == true)
-            {
-                Cocktail order = currSeat.GetCocktailChoice();
-                Debug.Log("debug: " + order);
+                CurrSeatIndex--;
             }
-            else
+            else if (Input.GetKeyDown(KeyCode.D))
             {
-                Debug.Log("there's not a fat ass cat sitting here");
+                CurrSeatIndex++;
             }
-        }
 
-        Vector3 newPos = seatPositions[CurrSeatIndex].position;
-        newPos.y = transform.position.y;
-        transform.position = Vector3.MoveTowards(transform.position, newPos, moveSpeed * Time.deltaTime);
+            // Cat interaction
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                GameObject tempObj = GameObject.Find("Seat" + _currSeatIndex);
+                Seat currSeat = tempObj.GetComponent<Seat>();
+                if (currSeat._occupied == true && currSeat._catDecided == false)
+                {
+                    Debug.Log("there's a fat ass cat sitting here");
+                }
+                else if (currSeat._occupied == true && currSeat._catDecided == true)
+                {
+                    Cocktail order = currSeat.GetCocktailChoice();
+                    onServeCocktail?.Invoke(order);
+                }
+                else
+                {
+                    Debug.Log("there's not a fat ass cat sitting here");
+                }
+            }
+
+            Vector3 newPos = seatPositions[CurrSeatIndex].position;
+            newPos.y = transform.position.y;
+            transform.position = Vector3.MoveTowards(transform.position, newPos, moveSpeed * Time.deltaTime);
+        }
     }
 }
