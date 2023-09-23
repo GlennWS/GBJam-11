@@ -7,13 +7,16 @@ public class NoteObject : MonoBehaviour
 {
     public bool canBePressed;
     public KeyCode keyToPress;
-    public RhythmController rc;
+    public static RhythmController rhythmController;
     public float noteScore = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (rhythmController == null)
+        {
+            rhythmController = FindObjectOfType<RhythmController>();
+        }
     }
 
     // Update is called once per frame
@@ -24,7 +27,7 @@ public class NoteObject : MonoBehaviour
             if (canBePressed)
             {
                 gameObject.SetActive(false);
-                rc.NoteHit(noteScore);
+                rhythmController.NoteHit(noteScore);
             }
         }
     }
@@ -42,7 +45,7 @@ public class NoteObject : MonoBehaviour
         if (other.tag == "Activator" && gameObject.activeSelf)
         {
             canBePressed = false;
-            rc.NoteMissed();
+            rhythmController.NoteMissed();
         }
     }
 }

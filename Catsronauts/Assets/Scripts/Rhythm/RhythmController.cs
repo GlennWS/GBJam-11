@@ -37,6 +37,9 @@ public class RhythmController : MonoBehaviour
     {
         // Set the rhythm game as started
         beatScroller.hasStarted = true;
+        beatScroller.currentOrder = cocktail;
+        beatScroller.initialNote = GameObject.Find("NoteList").transform.Find(cocktail.ToString()).transform.GetChild(0).transform.position;
+        beatScroller.beatTempo = Songlist.GetSongTempo(cocktail.ToString()) / 60f;
         // Show the sprites of the rhythm bar and hit outline
         rhythmBarSR.enabled = true;
         noteHitSR.enabled = true;
@@ -72,6 +75,7 @@ public class RhythmController : MonoBehaviour
                 beatScroller.gameObject.transform.GetChild(7).gameObject.SetActive(true);
                 break;
         }
+        beatScroller.SetNotePlacements(GameObject.Find(cocktail.ToString()));
         // and play it!
         GetComponent<AudioSource>().clip = clip;
         GetComponent<AudioSource>().Play();
