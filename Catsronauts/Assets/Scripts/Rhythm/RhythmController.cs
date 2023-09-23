@@ -1,15 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RhythmController : MonoBehaviour
 {
     public BeatScroller beatScroller;
     public SpriteRenderer rhythmBarSR;
     public SpriteRenderer noteHitSR;
+    public float totalScore = 0;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI multiplierText;
+
+    public int currentMultiplier;
+    public int multiplierCounter;
+    public int[] multiplierThresholds;
 
     void OnEnable()
     {
+        currentMultiplier = 1;
         PlayerController.onServeCocktail += StartRhythmGame;
     }
 
@@ -27,6 +37,9 @@ public class RhythmController : MonoBehaviour
     {
         // Set the rhythm game as started
         beatScroller.hasStarted = true;
+        beatScroller.currentOrder = cocktail;
+        beatScroller.initialNote = GameObject.Find("NoteList").transform.Find(cocktail.ToString()).transform.GetChild(0).transform.position;
+        beatScroller.beatTempo = Songlist.GetSongTempo(cocktail.ToString()) / 60f;
         // Show the sprites of the rhythm bar and hit outline
         rhythmBarSR.enabled = true;
         noteHitSR.enabled = true;
@@ -62,8 +75,43 @@ public class RhythmController : MonoBehaviour
                 beatScroller.gameObject.transform.GetChild(7).gameObject.SetActive(true);
                 break;
         }
+        float delayTime = beatScroller.SetNotePlacements(GameObject.Find(cocktail.ToString()));
         // and play it!
         GetComponent<AudioSource>().clip = clip;
+        StartCoroutine(PlaySong(delayTime));
+    }
+
+    private IEnumerator PlaySong(float startDelay)
+    {
+        yield return new WaitForSeconds(startDelay - 0.2f);
         GetComponent<AudioSource>().Play();
+
+    }
+
+    public void NoteHit(float noteScore)
+    {
+        if (currentMultiplier - 1 < multiplierThresholds.Length)
+        {
+            multiplierCounter++;
+            if (multiplierThresholds[currentMultiplier - 1] <= multiplierCounter)
+            {
+                multiplierCounter = 0;
+                currentMultiplier++;
+            }
+        }
+        totalScore += noteScore * currentMultiplier;
+        scoreText.text = "Score: " + totalScore;
+        multiplierText.text = "Multiplier: x" + currentMultiplier;
+    }
+
+    public void NoteMissed()
+    {
+        Debug.Log("missed");
+
+        totalScore -= 10;
+        currentMultiplier = 1;
+        multiplierCounter = 0;
+
+        multiplierText.text = "Multiplier: x" + currentMultiplier;
     }
 }
