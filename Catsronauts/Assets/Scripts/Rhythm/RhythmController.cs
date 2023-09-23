@@ -75,10 +75,17 @@ public class RhythmController : MonoBehaviour
                 beatScroller.gameObject.transform.GetChild(7).gameObject.SetActive(true);
                 break;
         }
-        beatScroller.SetNotePlacements(GameObject.Find(cocktail.ToString()));
+        float delayTime = beatScroller.SetNotePlacements(GameObject.Find(cocktail.ToString()));
         // and play it!
         GetComponent<AudioSource>().clip = clip;
+        StartCoroutine(PlaySong(delayTime));
+    }
+
+    private IEnumerator PlaySong(float startDelay)
+    {
+        yield return new WaitForSeconds(startDelay - 0.2f);
         GetComponent<AudioSource>().Play();
+
     }
 
     public void NoteHit(float noteScore)

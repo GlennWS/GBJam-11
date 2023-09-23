@@ -17,13 +17,13 @@ public class Songlist : MonoBehaviour
         {"Lemeownade", 0 }
     };
 
-    static Dictionary<string, float> songBeats = new Dictionary<string, float>()
+    static Dictionary<string, int> songBeats = new Dictionary<string, int>()
     {
         {"PinyaCatlata", 0 },
         {"Meowgarita", 0 },
         {"CosmosMeowlatin", 0 },
-        {"Meowtini", (150 / 60) * 50 },
-        {"PurrrumandCoke", (130 / 60) * 59 },
+        {"Meowtini", Mathf.RoundToInt((150f / 60f) * 51.2f) },
+        {"PurrrumandCoke", Mathf.RoundToInt((130f / 60f) * 36.923f) - 7 },
         {"Yeowlgabombs", 0 },
         {"WiskeryandCoke", 0 },
         {"Lemeownade", 0 }
@@ -41,9 +41,9 @@ public class Songlist : MonoBehaviour
         return songTempo;
     }
 
-    public static float GetSongBeats(string songName)
+    public static int GetSongBeats(string songName)
     {
-        float songTotalBeats = songBeats[songName];
+        int songTotalBeats = songBeats[songName];
         return songTotalBeats;
     }
 }
