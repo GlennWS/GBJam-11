@@ -8,7 +8,7 @@ public class BeatScroller : MonoBehaviour
     public bool hasStarted;
     public Cocktail currentOrder;
     public List<GameObject> notePrefabs;
-    public Vector3 initialNote;
+    //public Vector3 initialNote;
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +31,11 @@ public class BeatScroller : MonoBehaviour
     public float SetNotePlacements(GameObject parent)
     {
         float totalBeats = Songlist.GetSongBeats(currentOrder.ToString());
-        Vector3 initialBeatPrefabPos = initialNote;
-        for (int i = 1; i < totalBeats; i++)
+        //Vector3 initialBeatPrefabPos = initialNote;
+        for (int i = 0; i < totalBeats; i++)
         {
             GameObject newNote = Instantiate(notePrefabs[UnityEngine.Random.Range(0, notePrefabs.Count)], parent.transform);
-            newNote.transform.position = new Vector3(initialBeatPrefabPos.x - i, initialBeatPrefabPos.y, 0.0f);
+            newNote.transform.position = new Vector3(-7 - i, 4, 0.0f);
         }
         return (11.6f / beatTempo);
     }

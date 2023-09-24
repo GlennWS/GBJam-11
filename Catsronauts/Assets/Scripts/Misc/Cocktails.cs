@@ -32,7 +32,7 @@ public static class Cocktails
     public static Cocktail GetRandomCocktail()
     {
         //int random = UnityEngine.Random.Range(0, cocktailNames.Count);
-        int random = 3;
+        int random = 4;
         return (Cocktail) random;
     }
 }

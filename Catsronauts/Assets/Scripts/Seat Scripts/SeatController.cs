@@ -63,5 +63,13 @@ public class SeatController : MonoBehaviour
             // Add the unoccupied seats list to the original array
             seats = tempSeatList.ToArray();
         }
+
+        
+    }
+
+    public static void RemoveCatFromSeat(int seatNum)
+    {
+        Seat seat = GameObject.Find("Seat" + seatNum).GetComponent<Seat>();
+        seat.VacateSeat();
     }
 }

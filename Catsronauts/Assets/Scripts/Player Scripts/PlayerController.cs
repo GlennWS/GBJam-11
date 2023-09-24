@@ -29,17 +29,17 @@ public class PlayerController : MonoBehaviour
         if (!beatScroller.hasStarted)
         {
             // Player movement
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 CurrSeatIndex--;
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 CurrSeatIndex++;
             }
 
             // Cat interaction
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.A))
             {
                 GameObject tempObj = GameObject.Find("Seat" + _currSeatIndex);
                 Seat currSeat = tempObj.GetComponent<Seat>();
