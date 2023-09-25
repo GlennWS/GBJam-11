@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,15 +9,13 @@ public class TextController : MonoBehaviour
 {
     public GameObject tutorialBox;
     public TextMeshProUGUI tutorialBoxText;
-    // string array? just loop through them
-    public string firstText;
-    public string secondText;
-    public string thirdText;
-    public string fourthText;
+    public string[] tutorialText;
     public float delayBetweenCharacters = 0.05f;
 
     private string currentText = "";
     private bool typing = false;
+    private bool finishedTyping = false;
+    private bool waitForInput = false;
 
     void OnEnable()
     {
@@ -38,17 +37,35 @@ public class TextController : MonoBehaviour
 
     public IEnumerator TypeTutorialText()
     {
-        tutorialBoxText.text = "";
-        yield return StartCoroutine(TypeText(firstText));
-        yield return new WaitForSeconds(4);
-        tutorialBoxText.text = "";
-        yield return StartCoroutine(TypeText(secondText));
-        yield return new WaitForSeconds(4);
-        tutorialBoxText.text = "";
-        yield return StartCoroutine(TypeText(thirdText));
-        yield return new WaitForSeconds(4);
-        tutorialBoxText.text = "";
-        yield return StartCoroutine(TypeText(fourthText));
+        for (int i = 0; i < tutorialText.Length; i++)
+        {
+            tutorialBoxText.text = "";
+            yield return StartCoroutine(TypeText(tutorialText[i]));
+            yield return new WaitForSeconds(1);
+            if (i ==  tutorialText.Length - 1)
+            {
+                tutorialBox.SetActive(false);
+            }
+        }
+        finishedTyping = true;
+    }
+
+    public IEnumerator WaitForSecondsOrInput(float time)
+    {
+        WaitForSeconds waitTime = new WaitForSeconds(time);
+        yield return waitTime;
+        waitForInput = true;
+
+        while (waitForInput)
+        {
+            if (Input.anyKeyDown)
+            {
+                waitForInput = false;
+                yield break;
+            }
+
+            yield return null;
+        }
     }
 
     void Update()

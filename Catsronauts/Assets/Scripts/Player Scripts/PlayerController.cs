@@ -43,18 +43,10 @@ public class PlayerController : MonoBehaviour
             {
                 GameObject tempObj = GameObject.Find("Seat" + _currSeatIndex);
                 Seat currSeat = tempObj.GetComponent<Seat>();
-                if (currSeat._occupied == true && currSeat._catDecided == false)
-                {
-                    Debug.Log("there's a fat ass cat sitting here");
-                }
-                else if (currSeat._occupied == true && currSeat._catDecided == true)
+                if (currSeat._occupied == true && currSeat._catDecided == true)
                 {
                     Cocktail order = currSeat.GetCocktailChoice();
                     onServeCocktail?.Invoke(order);
-                }
-                else
-                {
-                    Debug.Log("there's not a fat ass cat sitting here");
                 }
             }
 

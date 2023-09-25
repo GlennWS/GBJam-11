@@ -13,15 +13,19 @@ public class RhythmController : MonoBehaviour
     public float totalScore = 0;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI multiplierText;
+    public GameObject blackoutSquare;
 
     public int currentMultiplier;
     public int multiplierCounter;
     public int[] multiplierThresholds;
     private AudioSource audioSource;
     private AudioSource titleScreenAudio;
+    public AudioClip endMusic;
     private float titleScreenAudioVolume;
 
     private int currentSeatNum;
+    private bool gameFinished;
+    private bool loadEndSequence;
 
     void OnEnable()
     {
@@ -40,7 +44,22 @@ public class RhythmController : MonoBehaviour
 
     void Update()
     {
-        
+        if (gameFinished == true)
+        {
+            Vector3 currentPos = blackoutSquare.GetComponent<Transform>().transform.position;
+            blackoutSquare.GetComponent<Transform>().transform.position = Vector3.MoveTowards(currentPos, new Vector3(0.0f, 0.0f, 0.0f), 5.0f * Time.deltaTime);
+            if (currentPos == new Vector3(0.0f, 0.0f, 0.0f))
+            {
+                loadEndSequence = true;
+            }
+        }
+
+        if (loadEndSequence == true)
+        {
+            StartCoroutine(FadeOutMusic(titleScreenAudio, 3.0f));
+            DontDestroyOnLoad(blackoutSquare);
+            SceneManager.LoadScene("EndScreen");
+        }
     }
 
     void StartRhythmGame(Cocktail cocktail)
@@ -48,7 +67,6 @@ public class RhythmController : MonoBehaviour
         // Set the rhythm game as started
         beatScroller.hasStarted = true;
         beatScroller.currentOrder = cocktail;
-        //beatScroller.initialNote = GameObject.Find("NoteList").transform.Find(cocktail.ToString()).transform.GetChild(0).transform.position;
         beatScroller.beatTempo = Songlist.GetSongTempo(cocktail.ToString()) / 60f;
         // Show the sprites of the rhythm bar and hit outline
         rhythmBarSR.enabled = true;
@@ -106,6 +124,10 @@ public class RhythmController : MonoBehaviour
         {
             yield return null;
         }
+        if (HasGameFinished() == true)
+        {
+            gameFinished = true;
+        }
         beatScroller.hasStarted = false;
         rhythmBarSR.enabled = false;
         noteHitSR.enabled = false;
@@ -125,6 +147,17 @@ public class RhythmController : MonoBehaviour
         }
 
         audioSrc.Pause();
+    }
+
+    private bool HasGameFinished()
+    {
+        if (totalScore >= 2500)
+        {
+            return true;
+        } else 
+        { 
+            return false;
+        }
     }
 
     public void NoteHit(float noteScore)

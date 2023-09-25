@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2, g: 0.11764706, b: 0.3137255, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -942,8 +942,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283440691
-  m_fontColor: {r: 0.20000002, g: 0.11764707, b: 0.3137255, a: 1}
+    rgba: 4291225591
+  m_fontColor: {r: 0.96862745, g: 0.90588236, b: 0.7764706, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1061,7 +1061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2, g: 0.11764706, b: 0.3137255, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1221,6 +1221,90 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1808714145}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1099545080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1099545082}
+  - component: {fileID: 1099545081}
+  m_Layer: 0
+  m_Name: FadeToBlackSquare
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1099545081
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099545080}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 992837681
+  m_SortingLayer: 6
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 2994d43c7290d8947a4554d38c474d3b, type: 3}
+  m_Color: {r: 0.96862745, g: 0.90588236, b: 0.7764706, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 10, y: 9}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1099545082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099545080}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1119282680 stripped
 Transform:
@@ -1457,7 +1541,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.625, y: 0.625}
+    oldSize: {x: 0.75, y: 0.75}
     newSize: {x: 0.1, y: 0.1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1575,6 +1659,78 @@ PrefabInstance:
       propertyPath: beatScroller
       value: 
       objectReference: {fileID: 1808714144}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7950a96adc57b4341aaeead5df323881, type: 3}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: f03d09ecc03c50e49baecb511288ac40, type: 3}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7dce33169a31e594d93e680eb2ecd3d8, type: 3}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9dc852f9a62321b47ad3ce18ed798b91, type: 3}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: a3e4a87000e065a4d846ba7a6d1bf28a, type: 3}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2a34a028a3f07d844a61f6aad358e969, type: 3}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300000, guid: a42436cc4f2ab574ea23d0363ace6bbd, type: 3}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8547114d36eccd5468d2d9a24266f59d, type: 3}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[9]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8fc6374ea54d47a498fc50470248593a, type: 3}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[10]
+      value: 
+      objectReference: {fileID: 21300000, guid: ed106dc4077a72941b3e51f74a43bd22, type: 3}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[11]
+      value: 
+      objectReference: {fileID: 21300000, guid: 35f2452b5f1a0234d9643ba52348a272, type: 3}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[12]
+      value: 
+      objectReference: {fileID: 21300000, guid: 91e1ad35dee83cf4c913caa23ab05bed, type: 3}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[13]
+      value: 
+      objectReference: {fileID: 21300000, guid: b41bdf40117644c44bfa4dc82ec0b4af, type: 3}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[14]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4c38c03096a89ec4b9abf233f4813bf1, type: 3}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[15]
+      value: 
+      objectReference: {fileID: 21300000, guid: cfcd0f6f353d8bf4f8ae7b6801abfac7, type: 3}
+    - target: {fileID: 2208817993643451695, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: catSprites.Array.data[16]
+      value: 
+      objectReference: {fileID: 21300000, guid: abfd13bde6bfe614887dc553b7493e9d, type: 3}
+    - target: {fileID: 2504834209819119259, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.1875
+      objectReference: {fileID: 0}
     - target: {fileID: 3208865368947704860, guid: b4ed4ab46eee4224abfccdbb7d0bbc4f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1686,8 +1842,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283440691
-  m_fontColor: {r: 0.20000002, g: 0.11764707, b: 0.3137255, a: 1}
+    rgba: 4291225591
+  m_fontColor: {r: 0.96862745, g: 0.90588236, b: 0.7764706, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1866,10 +2022,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialBox: {fileID: 1192200270}
   tutorialBoxText: {fileID: 874576275}
-  firstText: You're probably wondering why you're here. We can't tell you that.
-  secondText: But, you wanna serve drinks to cats in space, right?
-  thirdText: To move, use the left and right arrow keys to move between customers.
-  fourthText: To take a customer order, press A. Then, the rhythm game will start!
+  tutorialText:
+  - You're probably wondering what you're doing here. We can't tell you that.
+  - But, you want to serve drinks to cats in space, right?
+  - Use the left and right arrows to move! Accept a cat's order with 'A'!
+  - Try to aim for 2500 points! Good luck!!
   delayBetweenCharacters: 0.05
 --- !u!1 &1911343949
 GameObject:
@@ -2189,7 +2346,7 @@ Transform:
   m_GameObject: {fileID: 1976433877}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.031, z: 0}
+  m_LocalPosition: {x: 0, y: 3.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2227,9 +2384,11 @@ MonoBehaviour:
   totalScore: 0
   scoreText: {fileID: 883603750}
   multiplierText: {fileID: 1781476761}
+  blackoutSquare: {fileID: 1099545080}
   currentMultiplier: 1
   multiplierCounter: 0
   multiplierThresholds: 040000000800000010000000
+  endMusic: {fileID: 8300000, guid: 447397d45330d6940a8f8a6b1713bb6e, type: 3}
 --- !u!1001 &1981907426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2366,7 +2525,7 @@ Transform:
   m_GameObject: {fileID: 2004060240}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: -3.4, z: 0.05434577}
+  m_LocalPosition: {x: -4, y: -2.9375, z: 0.05434577}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2455,6 +2614,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 1099545082}
   - {fileID: 912481311}
   - {fileID: 553373413}
   - {fileID: 2004060242}

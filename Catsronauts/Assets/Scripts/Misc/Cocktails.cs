@@ -10,9 +10,9 @@ public enum Cocktail
     CosmosMeowlatin = 2,
     Meowtini = 3,
     PurrrumandCoke = 4,
-    Yeowlgabombs = 5,
+    /*Yeowlgabombs = 5,
     WiskeryandCoke = 6,
-    Lemeownade = 7
+    Lemeownade = 7*/
 }
 
 public static class Cocktails
@@ -24,15 +24,14 @@ public static class Cocktails
         { Cocktail.CosmosMeowlatin, "Cosmos Meowlatin" },
         { Cocktail.Meowtini, "Meowtini" },
         { Cocktail.PurrrumandCoke, "Purrrum and Coke" },
-        { Cocktail.Yeowlgabombs, "Yeowlgabombs" },
+        /*{ Cocktail.Yeowlgabombs, "Yeowlgabombs" },
         { Cocktail.WiskeryandCoke, "Wiskery and Coke" },
-        { Cocktail.Lemeownade, "Lemeownade" }
+        { Cocktail.Lemeownade, "Lemeownade" }*/
     };
 
     public static Cocktail GetRandomCocktail()
     {
-        //int random = UnityEngine.Random.Range(0, cocktailNames.Count);
-        int random = 4;
+        int random = UnityEngine.Random.Range(0, cocktailNames.Count);
         return (Cocktail) random;
     }
 }
