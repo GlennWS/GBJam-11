@@ -20,10 +20,9 @@ public class SeatController : MonoBehaviour
     {
         // Accumulate elapsed time
         timer += Time.deltaTime;
-        //Debug.Log(timer);
 
         // After 5 seconds have passed,
-        if (timer >= 2.0f && seats.Length > 0 && beatScroller.hasStarted == false)
+        if (timer >= 8.0f && seats.Length > 0 && beatScroller.hasStarted == false)
         {
             // Set the timer back to 0
             timer = 0f;
@@ -63,5 +62,13 @@ public class SeatController : MonoBehaviour
             // Add the unoccupied seats list to the original array
             seats = tempSeatList.ToArray();
         }
+
+        
+    }
+
+    public static void RemoveCatFromSeat(int seatNum)
+    {
+        Seat seat = GameObject.Find("Seat" + seatNum).GetComponent<Seat>();
+        seat.VacateSeat();
     }
 }

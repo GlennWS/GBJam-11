@@ -7,9 +7,9 @@ public class Songlist : MonoBehaviour
 
     static Dictionary<string, int> songTempos = new Dictionary<string, int>()
     {
-        {"PinyaCatlata", 0 },
-        {"Meowgarita", 0 },
-        {"CosmosMeowlatin", 0 },
+        {"PinyaCatlata", 150 },
+        {"Meowgarita", 259 },
+        {"CosmosMeowlatin", 176 },
         {"Meowtini", 150 },
         {"PurrrumandCoke", 130 },
         {"Yeowlgabombs", 0 },
@@ -19,9 +19,9 @@ public class Songlist : MonoBehaviour
 
     static Dictionary<string, int> songBeats = new Dictionary<string, int>()
     {
-        {"PinyaCatlata", 0 },
-        {"Meowgarita", 0 },
-        {"CosmosMeowlatin", 0 },
+        {"PinyaCatlata", Mathf.RoundToInt((150f / 60f) * 41.6f) },
+        {"Meowgarita", Mathf.RoundToInt((259f / 60f) * 12.973f) },
+        {"CosmosMeowlatin", Mathf.RoundToInt((176f / 60f) * 24.545f) },
         {"Meowtini", Mathf.RoundToInt((150f / 60f) * 51.2f) },
         {"PurrrumandCoke", Mathf.RoundToInt((130f / 60f) * 36.923f) - 7 },
         {"Yeowlgabombs", 0 },

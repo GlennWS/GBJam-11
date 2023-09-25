@@ -34,6 +34,7 @@ public class Seat : MonoBehaviour
         _catDecided = false;
         _animator.SetBool("isOccupied", false);
         _animator.SetBool("isDecided", false);
+        gameObject.GetComponent<SpriteRenderer>().sprite = null;
     }
 
     private IEnumerator WaitToOrder()
